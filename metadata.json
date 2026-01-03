@@ -1,0 +1,7 @@
+{
+  "name": "Un Cafecito Conmigo",
+  "description": "A psychoanalytical AI journal for deep self-reflection, featuring voice entry and professional analysis using Gemini.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
