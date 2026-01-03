@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { 
   PlusCircle, CalendarDays, BrainCircuit, Flag, BarChart3, 
@@ -8,7 +7,7 @@ import {
   TrendingUp, BookOpen, ExternalLink, PlayCircle, Bookmark,
   Quote, ArrowRight, Target, Fingerprint, Settings, CalendarRange, 
   ArrowLeftRight, Wind, Sparkle, Moon, Smile, Frown, Zap, Ghost, Flame,
-  ListChecks, Compass
+  Compass
 } from 'lucide-react';
 import { JournalEntry, Goal, AnalysisReport, TabType, UserSettings, Sugerencia } from './types';
 import { PersistenceService } from './services/persistenceService';
@@ -183,11 +182,11 @@ const AnalysisContent: React.FC<{ data: Partial<AnalysisReport>, onSave?: () => 
           <h4 className="text-[10px] font-bold text-[#8B7E66] uppercase tracking-[0.2em] flex items-center gap-2 font-sans border-b border-slate-100 pb-4">
             <Compass className="w-4.5 h-4.5" /> Hoja de Ruta (Pasos y Tips)
           </h4>
-          <div className="space-y-3">
+          <div className="space-y-4">
             {data.pautas.map((pauta, idx) => (
-              <div key={idx} className="flex gap-3 items-start animate-fade-up" style={{ animationDelay: `${0.3 + idx * 0.1}s` }}>
-                <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-[#8B7E66]/10 flex items-center justify-center text-[#8B7E66]">
-                  <CheckCircle2 className="w-3.5 h-3.5" />
+              <div key={idx} className="flex gap-4 items-start animate-fade-up" style={{ animationDelay: `${0.3 + idx * 0.1}s` }}>
+                <div className="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-[#8B7E66]/10 flex items-center justify-center text-[#8B7E66] shadow-sm">
+                  <span className="text-[10px] font-bold font-sans">{idx + 1}</span>
                 </div>
                 <p className="text-[14px] italic leading-relaxed text-slate-700 font-serif">{pauta}</p>
               </div>
@@ -707,7 +706,7 @@ const App: React.FC = () => {
                 <h2 className="text-4xl font-bold italic text-[#8B7E66] font-serif">Tus Deseos</h2>
                 <p className="text-slate-400 font-sans text-[11px] uppercase tracking-[0.35em] font-bold">Aquello que pulsa por suceder</p>
               </header>
-              <div className="bg-white/90 backdrop-blur-md p-8 rounded-[45px] shadow-2xl border border-white/60 space-y-8 stagger-item" style={{ animationDelay: '0.2s' }}>
+              <div className="bg-white/90 backdrop-blur-md p-8 rounded-[40px] shadow-2xl border border-white/60 space-y-8 stagger-item" style={{ animationDelay: '0.2s' }}>
                  {goals.length === 0 ? (
                    <div className="text-center py-28 opacity-20 italic font-serif animate-fade-up">
                      <Heart className="w-16 h-16 mx-auto mb-5 opacity-10 animate-pulse" />
