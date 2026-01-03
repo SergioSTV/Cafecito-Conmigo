@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { 
   PlusCircle, CalendarDays, BrainCircuit, Flag, BarChart3, 
@@ -9,9 +10,9 @@ import {
   ArrowLeftRight, Wind, Sparkle, Moon, Smile, Frown, Zap, Ghost, Flame,
   Compass
 } from 'lucide-react';
-import { JournalEntry, Goal, AnalysisReport, TabType, UserSettings, Sugerencia } from './types';
-import { PersistenceService } from './services/persistenceService';
-import { analyzeDiscourse } from './services/geminiService';
+import { JournalEntry, Goal, AnalysisReport, TabType, UserSettings, Sugerencia } from './types.ts';
+import { PersistenceService } from './services/persistenceService.ts';
+import { analyzeDiscourse } from './services/geminiService.ts';
 
 // --- ANIMATED COMPONENTS ---
 

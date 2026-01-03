@@ -43,7 +43,7 @@
             height: 100%;
             background-color: #FDFBF7;
             font-family: 'Inter', sans-serif;
-            overflow: hidden; /* Evita scroll elástico en iOS */
+            overflow: hidden;
         }
 
         #root {
@@ -54,7 +54,7 @@
             bottom: 0;
             display: flex;
             flex-direction: column;
-            /* Soporte para viewports dinámicos */
+            height: 100vh;
             height: 100dvh; 
             width: 100vw;
         }
@@ -128,11 +128,6 @@
           scrollbar-width: none;
         }
 
-        /* Safe Area Padding for iOS */
-        .pb-safe { padding-bottom: calc(1rem + var(--safe-area-inset-bottom)); }
-        .pt-safe { padding-top: calc(1rem + var(--safe-area-inset-top)); }
-        
-        /* Asegurar que el contenido sea visible si hay errores de carga */
         .loading-fallback {
             display: flex;
             align-items: center;
@@ -140,6 +135,7 @@
             height: 100%;
             color: #8B7E66;
             font-style: italic;
+            font-family: 'Playfair Display', serif;
         }
     </style>
 <script type="importmap">
@@ -148,6 +144,7 @@
     "react/": "https://esm.sh/react@^19.2.3/",
     "react": "https://esm.sh/react@^19.2.3",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react-dom": "https://esm.sh/react-dom@^19.2.3",
     "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
     "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
   }
@@ -156,18 +153,30 @@
 </head>
 <body>
     <div id="root">
-        <div class="loading-fallback">Preparando tu café...</div>
+        <div class="loading-fallback">
+          <div style="text-align: center;">
+            <p>Preparando tu café...</p>
+            <div style="margin-top: 10px; font-size: 10px; color: #ccc; font-family: sans-serif; text-transform: uppercase; letter-spacing: 2px;">Espacio de reflexión</div>
+          </div>
+        </div>
     </div>
-    <script type="module" src="index.tsx"></script>
+    <script type="module" src="./index.tsx"></script>
     <script>
-        // Registro de Service Worker para PWA (opcional pero recomendado)
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js').catch(err => {
+                // Se usa ruta relativa para compatibilidad en Vercel
+                navigator.serviceWorker.register('./sw.js').catch(err => {
                     console.log('SW registration failed: ', err);
                 });
             });
         }
+        // Captura de errores críticos para depuración en producción
+        window.onerror = function(msg, url, line, col, error) {
+          console.error("App Error: ", msg, "at", url, ":", line);
+        };
+        window.onunhandledrejection = function(event) {
+          console.error("Unhandled Rejection: ", event.reason);
+        };
     </script>
 </body>
 </html>
